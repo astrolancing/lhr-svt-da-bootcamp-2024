@@ -19,8 +19,6 @@
   - Installing necessary libraries: Gymnasium, Stable-Baselines, matplotlib, NumPy
 - Overview of Reinforcement Learning (RL)
   - Key concepts: Agents, Environment, Actions, Rewards, Policy, Value Function
-  - Exploration vs. Exploitation
-  - RL problem formulation: Markov Decision Processes (MDPs)
 #### **Hands-On Exercises:**
 1. **Setup:**
    - Install Anaconda and set up a virtual environment.
@@ -170,103 +168,32 @@ Follow the README.md.
 
 If your installation runs smoothly with no issues, hurray you can now train and view models with our simulator and environment. 
 
-Let's take an overview of what key concepts there are when it comes to the codebase and RL in-general. 
+Let's take a brief overview of what key concepts there are when it comes to the codebase and RL in-general. 
+
+#### Key Concept: Machine Learning
+Machine learning is the field that involves computer algorithms and programs that can solve a problem  without particular instructions. It can sometimes mimic how humans learn.
+
+##### Reinforced Learning
+A ML technique that involves a simulation and teaches the program to solve problems through trial and error. It's often used in robotics, natural language, gaming, and often self-driving cars. 
+
+#### Key Concept: Sim-to-Real (S2R)
+S2R is the concept that our simulation does not exactly mimic the real world. That's pretty obvious, but what are the implications? The model after training will be insufficent to use in the real world. The model could be completely wrong in its predictions, it could even learn to abuse our simulation in unworldly ways. The model could be slightly wrong. Its predictions could result in cumaltive error over time, resulting in large ineffencies over long times. Since we're a solar car team, endurance is the game and this is not acceptable. S2R transfer techniques help mitigate this issue by transfering sim data to real-world data. 
+
+##### Domain Randomization
+
+A S2R technique we employ is domain randomization. Domain randomization adds randomization the 'domain' or the data the model is trainined on. It ideally represents the randomness we may see in the real world. Bumps on the road, random bursts of wind, etc. that we cannot really model. Domain randomization also helps prevents the model from being overfitting to one particular domain. 
+
+##### Domain Adapation
+
+Domain adapation is a technique we plan to employ. It involves the idea that if we have enough real-world data, we can create a model that can act as a function of some input and outputs real-world data. In our case, we'd like to create a model with the following inputs, pedal position, current weather, etc. and the following output would be power draw, acceleration, velocity, etc. Domain adapation is among the most difficult techniques but can be one of the most effective at S2R.
+
+#### Recommended Readings
+- https://gymnasium.farama.org/index.html
+- https://stable-baselines3.readthedocs.io/en/master/
+- Reinforcement Learning: An Introduction, Second edition, Richard S. Sutton and Andrew G. Barto
+  - Chapter 1
+  - Reading the rest is not required, particularly Chapter 11 is applicable to us though
+- https://openai.com/index/openai-baselines-ppo/
+
 
 ---
-
-### **Week 2: Understanding and Working with Gymnasium Environments**
-
-#### **Topics Covered:**
-- Introduction to OpenAI Gymnasium
-  - What is Gymnasium? (previously OpenAI Gym)
-  - Overview of built-in environments (CartPole, MountainCar, etc.)
-  - Interaction between agent and environment
-- Working with Gymnasium environments using Python
-  - Gymnasium environment API (`env.step()`, `env.reset()`, etc.)
-  - Monitoring and visualizing agent performance
-  
-#### **Hands-On Exercises:**
-1. **Exploring Gymnasium:**
-   - Load a basic Gymnasium environment (e.g., CartPole).
-   - Write a simple script that interacts with the environment, makes random actions, and collects rewards.
-
-2. **Visualization with Matplotlib:**
-   - Use matplotlib to plot the agent's performance over time (e.g., total reward per episode).
-   - Visualize the environment using `env.render()`.
-
-#### **Assignments:**
-- Create an agent that interacts with the CartPole environment.
-- Plot a graph showing the total reward per episode using matplotlib.
-- Document the environment and agent interactions in a report.
-
----
-
-### **Week 3: Deep Dive into Reinforcement Learning with Stable-Baselines**
-
-#### **Topics Covered:**
-- Introduction to Stable-Baselines
-  - Overview of RL algorithms in Stable-Baselines (DQN, PPO, A2C)
-  - Loading and training agents with Stable-Baselines
-- Implementing RL algorithms in Gymnasium environments
-  - Training an RL agent using the Proximal Policy Optimization (PPO) algorithm
-  - Understanding the training loop and model evaluation
-  
-#### **Hands-On Exercises:**
-1. **Training an RL Agent:**
-   - Train a PPO agent on the CartPole environment using Stable-Baselines.
-   - Understand and tweak hyperparameters (e.g., learning rate, gamma).
-   
-2. **Visualizing Training Progress:**
-   - Use matplotlib to plot the agent’s performance over episodes (e.g., reward curve).
-   - Evaluate the agent’s performance and compare different sets of hyperparameters.
-
-#### **Assignments:**
-- Train an RL agent using PPO on the CartPole environment and visualize the training progress.
-- Experiment with different hyperparameters and analyze their impact on the agent’s performance.
-- Write a short report on the challenges of training an RL agent and solutions you implemented.
-
----
-
-### **Week 4: Advanced RL Concepts and Custom Environments**
-
-#### **Topics Covered:**
-- Advanced RL concepts
-  - Value-based vs. Policy-based methods
-  - Actor-Critic methods
-  - Continuous vs. discrete action spaces
-- Creating and using custom Gymnasium environments
-  - Writing a custom environment for Gymnasium
-  - Integrating custom environments with Stable-Baselines
-- Monitoring and analyzing model performance
-  - Understanding overfitting in RL models
-  - Using evaluation metrics effectively
-  
-#### **Hands-On Exercises:**
-1. **Custom Gymnasium Environment:**
-   - Build and implement a custom Gymnasium environment (e.g., a simplified grid world).
-   - Train an RL agent on this custom environment using Stable-Baselines.
-
-2. **Final Project:**
-   - Choose an RL algorithm (e.g., DQN or A2C) and apply it to a Gymnasium environment of your choice.
-   - Implement different evaluation methods to assess the model's performance and stability.
-   
-#### **Assignments:**
-- Create and document your own Gymnasium environment.
-- Train an agent on this environment and present the results (with visualizations and explanations of the performance metrics).
-- Submit a final report summarizing the bootcamp experience and lessons learned.
-
----
-
-### **Bonus Topics (Optional):**
-- **Distributed RL**: Introduction to advanced RL methods such as Ape-X and IMPALA.
-- **Using TensorFlow/PyTorch**: Integration with RL frameworks for advanced algorithm customization.
-- **RL for Robotics**: Application of RL in robotics with simulation environments like MuJoCo or PyBullet.
-
----
-
-### **Deliverables:**
-- Weekly assignments (code, graphs, and reports).
-- Final project showcasing a trained RL agent in a custom Gymnasium environment.
-- Bootcamp completion certificate based on successful completion of all assignments and the final project.
-
-This bootcamp will offer participants a hands-on, practical approach to reinforcement learning while ensuring they gain the foundational knowledge required to apply these skills to real-world problems.
